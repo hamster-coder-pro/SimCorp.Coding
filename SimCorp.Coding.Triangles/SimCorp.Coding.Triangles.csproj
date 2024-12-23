@@ -1,0 +1,50 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include=".common\AppBase.cs" />
+    <Compile Include=".common\IInputArguments.cs" />
+    <Compile Include=".common\IInputProcessor.cs" />
+    <Compile Include=".common\IInputProvider.cs" />
+    <Compile Include=".common\IMatchResult.cs" />
+    <Compile Include=".common\InputProcessorBase.cs" />
+    <Compile Include=".common\InputProviderBase.cs" />
+    <Compile Include=".common\IOutputBuilder.cs" />
+    <Compile Include=".common\IOutputResult.cs" />
+    <Compile Include=".common\IO\ConsoleInputOutputDataStrategy.cs" />
+    <Compile Include=".common\IO\FileInputDataStrategy.cs" />
+    <Compile Include=".common\IO\IInputDataStrategy.cs" />
+    <Compile Include=".common\IO\IOutputDataStrategy.cs" />
+    <Compile Include=".common\IO\NullInputDataStrategy.cs" />
+    <Compile Include=".common\IO\NullOutputDataStrategy.cs" />
+    <Compile Include=".common\IO\StreamInputDataStrategyBase.cs" />
+    <Compile Include=".common\IResultMatcher.cs" />
+    <Compile Include=".common\Result.cs" />
+    <Compile Include=".common\ResultMatcherBase.cs" />
+    <Compile Include=".common\TypeOutputBuilderBase.cs" />
+    <Compile Include=".common\Utils\DoubleHelper.cs" />
+    <Compile Include=".common\Utils\IDoubleHelper.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="11.11.0" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="9.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="triangle-input.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Triangle\Area\" />
+  </ItemGroup>
+
+</Project>
