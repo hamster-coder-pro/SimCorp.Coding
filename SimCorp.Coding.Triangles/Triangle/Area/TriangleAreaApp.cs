@@ -10,4 +10,6 @@ internal class TriangleAreaApp : AppBase<TriangleArguments, TriangleAreaResult>
         : base(inputProvider, inputProcessor, outputProvider)
     {
     }
+
+    public override string Name { get; } = "triangle-area";
 }

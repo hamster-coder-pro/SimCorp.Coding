@@ -10,4 +10,6 @@ internal class TriangleTypeApp : AppBase<TriangleArguments, TriangleTypeResult>
         : base(inputProvider, inputProcessor, outputProvider)
     {
     }
+
+    public override string Name { get; } = "triangle-type";
 }

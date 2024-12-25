@@ -34,6 +34,12 @@ public class TriangleTypeAppTest
     }
 
     [Test]
+    public void HasValidName()
+    {
+        _triangleTypeApp.Name.Should().Be("triangle-type");
+    }
+
+    [Test]
     public void Run_ShouldProcessValidInputAndOutputResult()
     {
         // Arrange

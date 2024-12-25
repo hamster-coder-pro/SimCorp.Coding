@@ -1,4 +1,5 @@
-﻿using FluentValidation;
+﻿using System.CommandLine;
+using FluentValidation;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace SimCorp.Coding.Triangles
@@ -11,8 +12,9 @@ namespace SimCorp.Coding.Triangles
             {
                 var sp = CreateServiceProvider();
 
-                var triangleTypeApp = sp.GetRequiredService<TriangleTypeApp>();
-                triangleTypeApp.Run();
+                var scope = sp.CreateScope();
+                var command = scope.ServiceProvider.GetRequiredService<ApplicationCommand>();
+                command.Invoke(args);
             }
             catch (Exception exception)
             {
@@ -29,13 +31,15 @@ namespace SimCorp.Coding.Triangles
             try
             {
                 var serviceCollection = new ServiceCollection();
-                serviceCollection.AddValidatorsFromAssembly(typeof(Program).Assembly, ServiceLifetime.Transient);
+                serviceCollection.AddValidatorsFromAssembly(typeof(Program).Assembly, ServiceLifetime.Transient, includeInternalTypes: true);
 
                 serviceCollection.AddSingleton<IDoubleHelper, DoubleHelper>();
 
-                serviceCollection.AddTransient<TriangleTypeApp>();
-                serviceCollection.AddTransient<TriangleAreaApp>();
-                serviceCollection.AddTransient<TriangleLargestAngleApp>();
+                serviceCollection.AddTransient<ApplicationCommand>();
+                
+                serviceCollection.AddTransient<IApplication, TriangleTypeApp>();
+                serviceCollection.AddTransient<IApplication, TriangleAreaApp>();
+                serviceCollection.AddTransient<IApplication, TriangleLargestAngleApp>();
 
                 serviceCollection.AddTransient<IResultMatcher<TriangleArguments, TriangleTypeMatchResult>, TriangleIsEquilateralResultMatcher>();
                 serviceCollection.AddTransient<IResultMatcher<TriangleArguments, TriangleTypeMatchResult>, TriangleIsIsoscelesResultMatcher>();
@@ -55,7 +59,13 @@ namespace SimCorp.Coding.Triangles
                 serviceCollection.AddTransient<IInputProcessor<TriangleArguments, TriangleAreaResult>, TriangleAreaProcessor>();
                 serviceCollection.AddTransient<IInputProcessor<TriangleArguments, TriangleLargestAngleResult>, TriangleLargestAngleProcessor>();
 
-                serviceCollection.AddTransient<IInputProvider<TriangleArguments>, TriangleInputProvider>();
+                // register input parsers
+                serviceCollection.AddTransient<IInputProvider<TriangleArguments>, TriangleArgumentsInputProvider>();
+
+                // register output builders
+                serviceCollection.AddTransient<IOutputBuilder<TriangleTypeResult>, TriangleTypeResultOutputBuilder>();
+                serviceCollection.AddTransient<IOutputBuilder<TriangleAreaResult>, TriangleAreaResultOutputBuilder>();
+                serviceCollection.AddTransient<IOutputBuilder<TriangleLargestAngleResult>, TriangleLargestAngleResultOutputBuilder>();
 
                 return serviceCollection.BuildServiceProvider();
             }

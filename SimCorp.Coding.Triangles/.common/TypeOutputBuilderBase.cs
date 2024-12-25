@@ -34,19 +34,13 @@ internal abstract class TypeOutputBuilderBase<T> : IOutputBuilder<T>
     {
         if (result.IsSucceed == false)
         {
-            Output.WriteLine("Failed.");
-            if (string.IsNullOrEmpty(result.Error) == false)
-            {
-                Output.WriteLine(result.Error);
-            }
-
+            Output.WriteLine(string.IsNullOrEmpty(result.Error) == false ? $"Failed. {result.Error}" : "Failed.");
             return;
         }
 
         if (result.Value == null)
         {
-            Output.WriteLine("Failed.");
-            Output.WriteLine("result.Value is NULL");
+            Output.WriteLine("Failed. Value is NULL");
             return;
         }
 

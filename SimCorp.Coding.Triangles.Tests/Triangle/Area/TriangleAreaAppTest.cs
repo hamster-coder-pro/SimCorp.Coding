@@ -9,6 +9,21 @@ namespace SimCorp.Coding.Triangles.Tests;
 public class TriangleAreaAppTest
 {
     [Test]
+    public void HasValidName()
+    {
+        // Arrange
+        var mockInputProvider  = new Mock<IInputProvider<TriangleArguments>>();
+        var mockInputProcessor = new Mock<IInputProcessor<TriangleArguments, TriangleAreaResult>>();
+        var mockOutputProvider = new Mock<IOutputBuilder<TriangleAreaResult>>();
+
+        // Act
+        var sut = new TriangleAreaApp(mockInputProvider.Object, mockInputProcessor.Object, mockOutputProvider.Object);
+        
+        // assert
+        sut.Name.Should().Be("triangle-area");
+    }
+
+    [Test]
     public void Constructor_ShouldInitializeProperties()
     {
         // Arrange

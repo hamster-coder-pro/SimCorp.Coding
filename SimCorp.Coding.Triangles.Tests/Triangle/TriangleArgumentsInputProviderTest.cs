@@ -4,7 +4,7 @@ using NUnit.Framework;
 
 namespace SimCorp.Coding.Triangles.Tests;
 
-public class TriangleInputProviderTest
+public class TriangleArgumentsInputProviderTest
 {
     [Test]
     public void Check()
@@ -12,7 +12,7 @@ public class TriangleInputProviderTest
         // assign
         var inputStrategyMock = new Mock<IInputDataStrategy>();
         var outputStrategyMock = new Mock<IOutputDataStrategy>();
-        var sut = new TriangleInputProvider(inputStrategyMock.Object, outputStrategyMock.Object);
+        var sut = new TriangleArgumentsInputProvider(inputStrategyMock.Object, outputStrategyMock.Object);
 
         inputStrategyMock.SetupSequence(x => x.ReadLine())
                          .Returns("1")
@@ -47,7 +47,7 @@ public class TriangleInputProviderTest
         // assign
         var inputStrategyMock  = new Mock<IInputDataStrategy>();
         var outputStrategyMock = new Mock<IOutputDataStrategy>();
-        var sut                = new TriangleInputProvider(inputStrategyMock.Object, outputStrategyMock.Object);
+        var sut                = new TriangleArgumentsInputProvider(inputStrategyMock.Object, outputStrategyMock.Object);
         
         outputStrategyMock.Setup(x => x.WriteLine(It.IsAny<string>())).Throws(() => new Exception("WriteLine Exception"));
         outputStrategyMock.Setup(x => x.Write(It.IsAny<string>())).Throws(() => new Exception("Write Exception"));
@@ -78,7 +78,7 @@ public class TriangleInputProviderTest
         // assign
         var inputStrategyMock  = new Mock<IInputDataStrategy>();
         var outputStrategyMock = new Mock<IOutputDataStrategy>();
-        var sut                = new TriangleInputProvider(inputStrategyMock.Object, outputStrategyMock.Object);
+        var sut                = new TriangleArgumentsInputProvider(inputStrategyMock.Object, outputStrategyMock.Object);
 
         inputStrategyMock.Setup(x => x.ReadLine()).Throws(() => new Exception("ReadLine Exception"));
 

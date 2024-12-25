@@ -43,16 +43,14 @@ public class TypeOutputBuilderBaseTest
         // Assert
         if (!isSucceed)
         {
-            _mockOutputDataStrategy.Verify(o => o.WriteLine("Failed."), Times.Once);
             if (!string.IsNullOrEmpty(error))
             {
-                _mockOutputDataStrategy.Verify(o => o.WriteLine(error), Times.Once);
+                _mockOutputDataStrategy.Verify(o => o.WriteLine($"Failed. {error}"), Times.Once);
             }
         }
         else if (value == null)
         {
-            _mockOutputDataStrategy.Verify(o => o.WriteLine("Failed."),              Times.Once);
-            _mockOutputDataStrategy.Verify(o => o.WriteLine("result.Value is NULL"), Times.Once);
+            _mockOutputDataStrategy.Verify(o => o.WriteLine("Failed. Value is NULL"), Times.Once);
         }
         else
         {

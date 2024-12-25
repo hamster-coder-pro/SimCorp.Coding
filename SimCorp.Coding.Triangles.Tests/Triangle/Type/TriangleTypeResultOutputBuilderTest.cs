@@ -5,8 +5,8 @@ using NUnit.Framework;
 namespace SimCorp.Coding.Triangles.Tests;
 
 [TestFixture]
-[TestOf(typeof(TriangleTypeOutputBuilder))]
-public class TriangleTypeOutputBuilderTest
+[TestOf(typeof(TriangleTypeResultOutputBuilder))]
+public class TriangleTypeResultOutputBuilderTest
 {
     [Test]
     [TestCase(true,  null,             TriangleTypeEnum.Unknown,     "Triangle type is unknown")]
@@ -15,7 +15,7 @@ public class TriangleTypeOutputBuilderTest
     [TestCase(true,  null,             TriangleTypeEnum.Isosceles,   "Triangle type is isosceles")]
     [TestCase(true,  null,             (TriangleTypeEnum)999,        "Triangle type is 999")]
     [TestCase(false, null,             TriangleTypeEnum.Unknown,     "Failed.")]
-    [TestCase(false, "Error occurred", TriangleTypeEnum.Unknown,     "Failed.\nError occurred")]
+    [TestCase(false, "Error occurred", TriangleTypeEnum.Unknown,     "Failed. Error occurred")]
     public void Build_ShouldOutputCorrectMessages(
         bool             isSucceed,
         string?          error,
@@ -25,7 +25,7 @@ public class TriangleTypeOutputBuilderTest
     {
         // Arrange
         var mockOutput = new Mock<IOutputDataStrategy>();
-        var builder    = new TriangleTypeOutputBuilder(mockOutput.Object);
+        var builder    = new TriangleTypeResultOutputBuilder(mockOutput.Object);
         var result = isSucceed
             ? Result.Succeed(new TriangleTypeResult { Result = resultEnum })
             : Result.Failed<TriangleTypeResult>(error);

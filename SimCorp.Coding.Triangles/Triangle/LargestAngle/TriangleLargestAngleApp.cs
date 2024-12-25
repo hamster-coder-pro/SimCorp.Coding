@@ -17,4 +17,6 @@ internal class TriangleLargestAngleApp : AppBase<TriangleArguments, TriangleLarg
         : base(inputProvider, inputProcessor, outputProvider)
     {
     }
+
+    public override string Name { get; } = "triangle-largest-angle";
 }

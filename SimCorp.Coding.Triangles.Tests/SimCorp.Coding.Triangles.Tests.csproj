@@ -23,8 +23,4 @@
     <ProjectReference Include="..\SimCorp.Coding.Triangles\SimCorp.Coding.Triangles.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Triangle\Type\" />
-  </ItemGroup>
-
 </Project>

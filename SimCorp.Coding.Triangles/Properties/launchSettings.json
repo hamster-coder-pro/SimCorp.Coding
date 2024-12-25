@@ -1,0 +1,17 @@
+{
+  "profiles": {
+    "triangle-type": {
+      "commandName": "Project",
+      "commandLineArgs": "triangle-type"
+    },
+    "triangle-area": {
+      "commandName": "Project",
+      "commandLineArgs": "triangle-area"
+    },
+    "triangle-largest-angle": {
+      "commandName": "Project",
+      "commandLineArgs": "triangle-largest-angle"
+    }
+
+  }
+}

@@ -11,14 +11,14 @@ namespace SimCorp.Coding.Triangles;
 /// It extends the <see cref="InputProviderBase{TArguments}"/> class, specifically
 /// tailored for triangle-related input.
 /// </remarks>
-internal sealed class TriangleInputProvider : InputProviderBase<TriangleArguments>
+internal sealed class TriangleArgumentsInputProvider : InputProviderBase<TriangleArguments>
 {
     private IInputDataStrategy InputDataStrategy { get; }
 
     private IOutputDataStrategy OutputDataStrategy { get; }
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="TriangleInputProvider"/> class.
+    /// Initializes a new instance of the <see cref="TriangleArgumentsInputProvider"/> class.
     /// </summary>
     /// <param name="inputDataStrategy">
     /// The strategy used to handle input data for obtaining the lengths of the triangle's sides.
@@ -29,7 +29,7 @@ internal sealed class TriangleInputProvider : InputProviderBase<TriangleArgument
     /// <exception cref="ArgumentNullException">
     /// Thrown when <paramref name="inputDataStrategy"/> or <paramref name="outputDataStrategy"/> is <c>null</c>.
     /// </exception>
-    public TriangleInputProvider(IInputDataStrategy inputDataStrategy, IOutputDataStrategy outputDataStrategy)
+    public TriangleArgumentsInputProvider(IInputDataStrategy inputDataStrategy, IOutputDataStrategy outputDataStrategy)
     {
         InputDataStrategy  = inputDataStrategy;
         OutputDataStrategy = outputDataStrategy;

@@ -1,6 +1,6 @@
 ﻿namespace SimCorp.Coding.Triangles;
 
-internal abstract class AppBase<TInput, TOutput>
+internal abstract class AppBase<TInput, TOutput>: IApplication
     where TInput : IInputArguments
     where TOutput : IOutputResult
 {
@@ -18,6 +18,8 @@ internal abstract class AppBase<TInput, TOutput>
         InputProcessor = inputProcessor;
         OutputProvider = outputProvider;
     }
+
+    public abstract string Name { get; }
 
     public virtual void Run()
     {

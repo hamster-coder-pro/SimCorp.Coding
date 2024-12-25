@@ -24,6 +24,21 @@ public class TriangleLargestAngleAppTest
     }
 
     [Test]
+    public void HasValidName()
+    {
+        // Arrange
+        var mockInputProvider  = new Mock<IInputProvider<TriangleArguments>>();
+        var mockInputProcessor = new Mock<IInputProcessor<TriangleArguments, TriangleLargestAngleResult>>();
+        var mockOutputBuilder  = new Mock<IOutputBuilder<TriangleLargestAngleResult>>();
+
+        // Act
+        var sut = new TriangleLargestAngleApp(mockInputProvider.Object, mockInputProcessor.Object, mockOutputBuilder.Object);
+
+        // assert
+        sut.Name.Should().Be("triangle-largest-angle");
+    }
+
+    [Test]
     public void Run_ShouldCallInputProviderProvide()
     {
         // Arrange

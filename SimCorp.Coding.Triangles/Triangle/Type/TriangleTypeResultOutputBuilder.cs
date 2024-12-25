@@ -8,9 +8,9 @@
 /// appropriate output messages based on the triangle type. It extends the functionality
 /// of <see cref="TypeOutputBuilderBase{T}"/> to handle triangle-specific logic.
 /// </remarks>
-internal sealed class TriangleTypeOutputBuilder : TypeOutputBuilderBase<TriangleTypeResult>
+internal sealed class TriangleTypeResultOutputBuilder : TypeOutputBuilderBase<TriangleTypeResult>
 {
-    public TriangleTypeOutputBuilder(IOutputDataStrategy output)
+    public TriangleTypeResultOutputBuilder(IOutputDataStrategy output)
         : base(output)
     {
     }
